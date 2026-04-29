@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script"; // Import the Script component
+import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import FloatingButtons from "@/components/FloatingButton";
@@ -23,8 +23,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* 1. Google Ads (gtag.js) */}
+      {/* Keep head empty or for low-level meta tags only. 
+          Next.js Script component handles its own injection. 
+      */}
+      <head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased scroll-smooth",
+          inter.variable
+        )}
+      >
+        {/* 1. Google Ads (gtag.js) - Moved inside body */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18051535071"
           strategy="afterInteractive"
@@ -38,7 +47,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* 2. Google Tag Manager (GTM) */}
+        {/* 2. Google Tag Manager (GTM) - Moved inside body */}
         <Script id="gtm" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -48,14 +57,8 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PTLWP6CL');
           `}
         </Script>
-      </head>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased scroll-smooth",
-          inter.variable
-        )}
-      >
-        {/* 3. GTM (noscript) - Placed immediately after opening body tag */}
+
+        {/* 3. GTM (noscript) - Placed immediately after opening body tag per client request */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PTLWP6CL"
