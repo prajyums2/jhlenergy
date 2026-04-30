@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const FloatingButtons = () => {
@@ -36,6 +36,7 @@ const FloatingButtons = () => {
     };
   }, []);
 
+  const phoneNumber = "+917034621000";
   const whatsappNumber = "917034621000";
 
   if (!isMounted) {
@@ -44,6 +45,19 @@ const FloatingButtons = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-4">
+      {/* Call Button */}
+      <Link
+        href={`tel:${phoneNumber}`}
+        aria-label="Call Us"
+      >
+        <Button
+          size="icon"
+          className="bg-blue-600 hover:bg-blue-700 duration-300 ease-in-out text-white rounded-full shadow-lg w-14 h-14 hover:scale-110"
+        >
+          <Phone className="w-6 h-6" />
+        </Button>
+      </Link>
+
       {/* WhatsApp Button */}
       <Link
         href={`https://wa.me/${whatsappNumber}`}
@@ -55,7 +69,6 @@ const FloatingButtons = () => {
           size="icon"
           className="bg-[#25D366] hover:bg-[#128C7E] duration-300 ease-in-out text-white rounded-full shadow-lg w-14 h-14 hover:scale-110 "
         >
-          {/* CORRECTED: Removed Tailwind classes and used the size prop for the icon */}
           <FaWhatsapp size={32} className="w-12 h-12 scale-[2]" />
         </Button>
       </Link>
