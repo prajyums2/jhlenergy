@@ -36,7 +36,7 @@ const FloatingButtons = () => {
     };
   }, []);
 
-  const whatsappNumber = "917034455488";
+  const whatsappNumber = "917034621000";
 
   if (!isMounted) {
     return null;

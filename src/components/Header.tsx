@@ -67,7 +67,7 @@ const Header = () => {
             className="hidden sm:inline-flex bg-yellow-400 text-black hover:bg-yellow-500 rounded-full px-6 py-2 shadow-md hover:shadow-lg transition-all"
             asChild
           >
-            <Link href="#quote">Get a Quote</Link>
+            <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer">Get a Quote</Link>
           </Button>
 
           {/* Mobile Menu Button */}
@@ -115,7 +115,7 @@ const Header = () => {
             className="bg-yellow-400 text-black hover:bg-yellow-500 rounded-full px-8 py-4 text-lg shadow-md hover:shadow-lg transition-all mt-8"
             asChild
           >
-            <Link href="#quote" onClick={toggleMenu}>
+            <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>
               Get a Quote
             </Link>
           </Button>

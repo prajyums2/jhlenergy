@@ -41,7 +41,7 @@ const Hero = () => {
               className=" text-yellow-400 hover:bg-yellow-400 hover:text-black rounded-full px-8 py-6 text-lg font-semibold shadow-lg transition-all hover:scale-105"
               asChild
             >
-              <Link href="#quote">Get a Quote</Link>
+              <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer">Get a Quote</Link>
             </Button>
           </div>
         </div>
