@@ -6,16 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  // State to manage the mobile menu's open/closed status
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Function to toggle the menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Google Ads Conversion Tracking
+  const handleConversion = () => {
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18051535071/5DlPCPzZ5KEcEN-h0p9D'
+      });
+    }
+  };
+
   return (
-    // UPDATED: Removed bg-white/80 and backdrop-blur-md for a solid background
     <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
@@ -67,7 +73,14 @@ const Header = () => {
             className="hidden sm:inline-flex bg-yellow-400 text-black hover:bg-yellow-500 rounded-full px-6 py-2 shadow-md hover:shadow-lg transition-all"
             asChild
           >
-            <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer">Get a Quote</Link>
+            <a 
+              href="https://wa.me/917034621000" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={handleConversion}
+            >
+              Get a Quote
+            </a>
           </Button>
 
           {/* Mobile Menu Button */}
@@ -115,9 +128,17 @@ const Header = () => {
             className="bg-yellow-400 text-black hover:bg-yellow-500 rounded-full px-8 py-4 text-lg shadow-md hover:shadow-lg transition-all mt-8"
             asChild
           >
-            <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>
+            <a 
+              href="https://wa.me/917034621000" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              onClick={(e) => {
+                handleConversion();
+                toggleMenu();
+              }}
+            >
               Get a Quote
-            </Link>
+            </a>
           </Button>
         </div>
       )}

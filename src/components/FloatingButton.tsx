@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUp, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
@@ -36,6 +35,15 @@ const FloatingButtons = () => {
     };
   }, []);
 
+  // Google Ads Conversion Tracking
+  const handleConversion = () => {
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18051535071/5DlPCPzZ5KEcEN-h0p9D'
+      });
+    }
+  };
+
   const phoneNumber = "+917034621000";
   const whatsappNumber = "917034621000";
 
@@ -46,9 +54,10 @@ const FloatingButtons = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-4">
       {/* Call Button */}
-      <Link
+      <a
         href={`tel:${phoneNumber}`}
         aria-label="Call Us"
+        onClick={handleConversion}
       >
         <Button
           size="icon"
@@ -56,14 +65,15 @@ const FloatingButtons = () => {
         >
           <Phone className="w-6 h-6" />
         </Button>
-      </Link>
+      </a>
 
       {/* WhatsApp Button */}
-      <Link
+      <a
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
+        onClick={handleConversion}
       >
         <Button
           size="icon"
@@ -71,7 +81,7 @@ const FloatingButtons = () => {
         >
           <FaWhatsapp size={32} className="w-12 h-12 scale-[2]" />
         </Button>
-      </Link>
+      </a>
 
       {/* Scroll to Top Button */}
       {isVisible && (

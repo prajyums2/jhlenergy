@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Hero = () => {
+  // Google Ads Conversion Tracking
+  const handleConversion = () => {
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18051535071/5DlPCPzZ5KEcEN-h0p9D'
+      });
+    }
+  };
+
   return (
     <section className="relative h-[100vh] min-h-[600px] text-white">
       {/* Background Image with Overlay */}
@@ -33,6 +42,7 @@ const Hero = () => {
               className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-6 text-lg font-semibold shadow-lg transition-transform hover:scale-105"
               asChild
             >
+              {/* Internal links stay as Next.js Links */}
               <Link href="#solutions">Our Solutions</Link>
             </Button>
             <Button
@@ -41,7 +51,15 @@ const Hero = () => {
               className=" text-yellow-400 hover:bg-yellow-400 hover:text-black rounded-full px-8 py-6 text-lg font-semibold shadow-lg transition-all hover:scale-105"
               asChild
             >
-              <Link href="https://wa.me/917034621000" target="_blank" rel="noopener noreferrer">Get a Quote</Link>
+              {/* External contact links changed to standard <a> tags with tracking */}
+              <a 
+                href="https://wa.me/917034621000" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={handleConversion}
+              >
+                Get a Quote
+              </a>
             </Button>
           </div>
         </div>
