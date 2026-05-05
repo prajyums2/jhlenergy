@@ -47,26 +47,26 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* 2. Google Tag Manager (GTM) - Moved inside body */}
-        <Script id="gtm" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PTLWP6CL');
-          `}
-        </Script>
+        {/* 2. Google Tag Manager (GTM) */}
+<Script id="gtm" strategy="afterInteractive">
+  {`
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5LFZ8JDD');
+  `}
+</Script>
 
-        {/* 3. GTM (noscript) - Placed immediately after opening body tag per client request */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PTLWP6CL"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+        {/* 3. GTM (noscript) */}
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-5LFZ8JDD"
+    height="0"
+    width="0"
+    style={{ display: "none", visibility: "hidden" }}
+  />
+</noscript>
 
         {children}
         <FloatingButtons />
